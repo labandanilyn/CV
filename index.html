@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danilyn Laban — Quantity Surveyor Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  :root {
+    --navy:#0D2149;--navy-mid:#1B3A6B;--navy-light:#2A5298;
+    --gold:#C9960A;--gold-light:#F0B429;--cream:#F7F8FA;
+    --text-mid:#3A4D6B;--text-muted:#7A8BA8;--border:rgba(13,33,73,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#FAFBFD;color:#0D2149;}
+  .pw{max-width:860px;margin:0 auto;}
+
+  /* NAV */
+  .nb{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;gap:4px;padding:10px 20px;overflow-x:auto;scrollbar-width:none;}
+  .nb::-webkit-scrollbar{display:none;}
+  .np{flex-shrink:0;background:transparent;border:0.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);border-radius:20px;padding:6px 16px;font-size:13px;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-family:inherit;}
+  .np:hover,.np.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:600;}
+  .sec{display:none;}.sec.active{display:block;}
+
+  /* HERO */
+  .hero{background:var(--navy);padding:56px 32px 48px;color:white;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(201,150,10,0.18);}
+  .hero::after{content:'';position:absolute;right:-10px;top:-10px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(201,150,10,0.12);}
+  .hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,150,10,0.15);border:0.5px solid rgba(201,150,10,0.4);border-radius:20px;padding:5px 16px;font-size:11px;color:var(--gold-light);margin-bottom:20px;letter-spacing:0.8px;text-transform:uppercase;}
+  .hname{font-size:38px;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px;line-height:1.1;}
+  .hname span{color:var(--gold-light);}
+  .htitle{font-size:15px;color:rgba(255,255,255,0.7);margin-bottom:26px;font-weight:400;}
+  .hstats{display:flex;gap:28px;margin-bottom:28px;flex-wrap:wrap;}
+  .hstat{text-align:center;}
+  .hsn{font-size:28px;font-weight:700;color:var(--gold-light);line-height:1;}
+  .hsl{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;}
+  .hcon{display:flex;flex-wrap:wrap;gap:10px;}
+  .hc{display:flex;align-items:center;gap:7px;font-size:12.5px;color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.14);border-radius:8px;padding:7px 14px;text-decoration:none;transition:background 0.2s;}
+  .hc:hover{background:rgba(255,255,255,0.13);}
+  .hc i{font-size:15px;color:var(--gold-light);}
+  .hsum{background:rgba(255,255,255,0.07);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:26px;font-size:13.5px;line-height:1.75;color:rgba(255,255,255,0.85);}
+  .ts{background:var(--navy-mid);padding:12px 24px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .tsl{font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-right:4px;}
+  .tp{font-size:11.5px;padding:4px 12px;border-radius:5px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:0.5px solid rgba(255,255,255,0.18);}
+
+  /* SECTION HEADER */
+  .sh{background:var(--navy);padding:22px 28px 18px;color:white;}
+  .se{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-light);margin-bottom:5px;display:flex;align-items:center;gap:7px;}
+  .sh h2{font-size:22px;font-weight:700;color:white;}
+  .sb{padding:24px;}
+
+  /* TAGS / CHIPS */
+  .tag{font-size:10.5px;padding:3px 8px;border-radius:4px;background:rgba(201,150,10,0.1);color:#7a5500;border:0.5px solid rgba(201,150,10,0.28);font-weight:500;}
+  .tag.bl{background:rgba(42,82,152,0.09);color:#1B3A6B;border-color:rgba(42,82,152,0.22);}
+  .chip{font-size:12px;padding:5px 11px;border-radius:6px;background:#EEF2FA;color:var(--navy-mid);font-weight:500;}
+  .chip.g{background:rgba(201,150,10,0.1);color:#7a5500;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .stags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 5px;}
+  .tused{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+  .sstd{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+
+  /* SERVICES */
+  .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+  .scard{background:white;border:0.5px solid var(--border);border-radius:12px;padding:18px 15px;transition:border-color 0.2s;}
+  .scard:hover{border-color:rgba(42,82,152,0.35);}
+  .sico{width:42px;height:42px;background:rgba(13,33,73,0.06);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:11px;}
+  .sico i{font-size:21px;color:var(--navy-light);}
+  .scard h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px;line-height:1.35;}
+  .scard p{font-size:11.5px;color:var(--text-muted);line-height:1.6;}
+
+  /* BACKGROUND */
+  .bgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .bgc{background:white;border:0.5px solid var(--border);border-radius:12px;padding:18px;}
+  .bgcf{grid-column:1/-1;}
+  .bgl{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);margin-bottom:11px;font-weight:700;}
+  .clist{list-style:none;}
+  .clist li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-mid);line-height:1.55;padding:7px 0;border-bottom:0.5px solid var(--border);}
+  .clist li:last-child{border-bottom:none;}
+  .clist li i{font-size:15px;color:var(--gold);margin-top:1px;flex-shrink:0;}
+  .edu{display:flex;gap:14px;align-items:flex-start;}
+  .edui{width:44px;height:44px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .edui i{color:var(--gold-light);font-size:20px;}
+  .edut{font-size:14px;font-weight:700;color:var(--navy);}
+  .edus{font-size:12.5px;color:var(--text-muted);margin-top:3px;}
+  .edub{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+
+  /* PROJECTS */
+  .pgrid{display:flex;flex-direction:column;gap:14px;}
+  .pc{background:white;border:0.5px solid var(--border);border-radius:12px;padding:18px;border-left:3px solid var(--navy-light);}
+  .ph2{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px;}
+  .pn{font-size:14px;font-weight:700;color:var(--navy);}
+  .pm{font-size:10.5px;padding:3px 9px;border-radius:4px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+  .uk{background:rgba(13,33,73,0.08);color:var(--navy);}
+  .au{background:rgba(0,128,0,0.09);color:#1a5c1a;}
+  .ie{background:rgba(0,100,60,0.09);color:#0a4a2e;}
+  .ca{background:rgba(200,0,0,0.08);color:#8b0000;}
+  .ptasks{list-style:none;}
+  .ptasks li{font-size:12.5px;color:var(--text-mid);padding:5px 0 5px 18px;position:relative;line-height:1.55;border-bottom:0.5px solid rgba(13,33,73,0.05);}
+  .ptasks li:last-child{border-bottom:none;}
+  .ptasks li::before{content:'';position:absolute;left:5px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+  /* EXPERIENCE */
+  .tl{position:relative;padding-left:24px;}
+  .tl::before{content:'';position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:var(--border);}
+  .ti2{position:relative;margin-bottom:20px;}
+  .tdot{position:absolute;left:-20px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--navy);border:2px solid white;box-shadow:0 0 0 2px var(--navy-light);}
+  .tdot.gd{background:var(--gold);box-shadow:0 0 0 2px var(--gold);}
+  .jc{background:white;border:0.5px solid var(--border);border-radius:12px;padding:16px 18px;}
+  .jh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;}
+  .jr{font-size:14px;font-weight:700;color:var(--navy);}
+  .jco{font-size:12.5px;color:var(--navy-light);margin-top:2px;font-weight:600;}
+  .jd{font-size:11px;color:var(--text-muted);background:var(--cream);padding:4px 10px;border-radius:5px;white-space:nowrap;flex-shrink:0;border:0.5px solid var(--border);}
+  .jl{font-size:11.5px;color:var(--text-muted);margin-bottom:9px;display:flex;align-items:center;gap:5px;}
+  .jb{list-style:none;}
+  .jb li{font-size:12.5px;color:var(--text-mid);padding:4px 0 4px 16px;position:relative;line-height:1.55;}
+  .jb li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:1.5px;background:var(--gold);}
+  .sr2{background:rgba(13,33,73,0.03);border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;margin-top:10px;}
+  .sr2h{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+  .sr2n{font-size:12.5px;font-weight:700;color:var(--navy-mid);}
+  .sr2d{font-size:10.5px;color:var(--text-muted);}
+
+  /* PAYMENT */
+  .pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:16px;}
+  .pcard{background:white;border:0.5px solid var(--border);border-radius:12px;padding:18px;position:relative;}
+  .pcard.ft{border:2px solid var(--navy-light);}
+  .pico{font-size:26px;margin-bottom:11px;display:block;color:var(--navy-light);}
+  .pt2{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+  .pd{font-size:12px;color:var(--text-muted);line-height:1.6;}
+  .pbadge{position:absolute;top:11px;right:11px;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:700;background:var(--navy);color:var(--gold-light);text-transform:uppercase;letter-spacing:0.6px;}
+
+  /* RATES TABLE */
+  .rates-table{width:100%;border-collapse:collapse;margin-top:6px;}
+  .rates-table th{background:var(--navy);color:white;padding:10px 14px;font-size:12px;font-weight:600;text-align:left;}
+  .rates-table th:last-child{text-align:center;}
+  .rates-table td{padding:10px 14px;font-size:12.5px;border-bottom:0.5px solid var(--border);color:var(--text-mid);}
+  .rates-table td:last-child{text-align:center;}
+  .rates-table tr:last-child td{border-bottom:none;}
+  .rates-table tr:hover td{background:rgba(13,33,73,0.02);}
+  .rate-val{font-weight:700;color:var(--navy);}
+  .rate-badge{font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(201,150,10,0.12);color:#7a5500;border:0.5px solid rgba(201,150,10,0.28);font-weight:600;}
+
+  .avail{background:var(--navy);border-radius:12px;padding:20px;color:white;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+  .ai{display:flex;flex-direction:column;gap:4px;}
+  .al{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:rgba(255,255,255,0.45);}
+  .av{font-size:14px;font-weight:600;color:white;}
+  .av.gd{color:var(--gold-light);}
+  .cta{margin-top:16px;background:var(--gold);border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .ctat{font-size:14px;font-weight:700;color:var(--navy);}
+  .ctas{font-size:12px;color:rgba(13,33,73,0.65);margin-top:3px;}
+  .ctab{background:var(--navy);color:white;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;text-decoration:none;}
+  .ctab:hover{background:var(--navy-mid);}
+
+  @media(max-width:600px){
+    .bgrid{grid-template-columns:1fr;}
+    .hname{font-size:28px;}
+    .hstats{gap:18px;}
+    .avail{grid-template-columns:1fr;}
+    .cta{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div class="pw">
+
+<nav class="nb" role="navigation" aria-label="Portfolio sections">
+  <button class="np active" onclick="show('about')"><i class="ti ti-user"></i> About me</button>
+  <button class="np" onclick="show('services')"><i class="ti ti-briefcase"></i> QS Services</button>
+  <button class="np" onclick="show('background')"><i class="ti ti-school"></i> Background</button>
+  <button class="np" onclick="show('projects')"><i class="ti ti-layout-list"></i> Projects</button>
+  <button class="np" onclick="show('experience')"><i class="ti ti-timeline"></i> Experience</button>
+  <button class="np" onclick="show('payment')"><i class="ti ti-coin"></i> Payment</button>
+</nav>
+
+<!-- ABOUT -->
+<div class="sec active" id="about">
+  <div class="hero">
+    <div class="hbadge"><i class="ti ti-map-pin"></i> Based in Philippines · Remote-Ready</div>
+    <div class="hname">Danilyn <span>Laban</span></div>
+    <div class="htitle">Quantity Surveyor &nbsp;·&nbsp; Civil Engineer &nbsp;·&nbsp; Remote QS Specialist</div>
+    <div class="hstats">
+      <div class="hstat"><div class="hsn">5+</div><div class="hsl">Years exp.</div></div>
+      <div class="hstat"><div class="hsn">3</div><div class="hsl">Markets</div></div>
+      <div class="hstat"><div class="hsn">UK &middot; Ireland &middot; AU</div><div class="hsl">Client base</div></div>
+    </div>
+    <div class="hcon">
+      <a class="hc" href="mailto:danilyn.laban@outlook.com"><i class="ti ti-mail"></i> danilyn.laban@outlook.com</a>
+      <a class="hc" href="tel:+639924178610"><i class="ti ti-phone"></i> +63 992 417 8610</a>
+      <a class="hc" href="https://linkedin.com/in/danilynlaban" target="_blank"><i class="ti ti-brand-linkedin"></i> linkedin.com/in/danilynlaban</a>
+      <span class="hc"><i class="ti ti-map-pin"></i> Caloocan, Philippines</span>
+    </div>
+    <div class="hsum">
+      Quantity Surveyor with 5 years of diverse experience in cost planning, estimation, quantity take-offs, BOQs, and project valuation across residential, commercial, and industrial projects. Strong track record of remote collaboration with UK, Irish, and Australian teams. Registered Civil Engineer proficient in CostX, Bluebeam, PlanSwift, and Excel.
+    </div>
+  </div>
+  <div class="ts">
+    <span class="tsl">Software</span>
+    <span class="tp">CostX</span><span class="tp">Bluebeam</span><span class="tp">PlanSwift</span><span class="tp">Pryda Build</span><span class="tp">Excel</span><span class="tp">AutoDesk</span>
+  </div>
+</div>
+
+<!-- QS SERVICES -->
+<div class="sec" id="services">
+  <div class="sh"><div class="se"><i class="ti ti-briefcase"></i> What I offer</div><h2>QS Services I Provide</h2></div>
+  <div class="sb">
+    <div class="sgrid">
+      <div class="scard"><div class="sico"><i class="ti ti-ruler-measure"></i></div><h3>Quantity Take-Off &amp; Measurement</h3><p>Accurate 2D and 3D take-offs for architectural, structural, civil, and MEP works.</p><div class="sstd"><span class="tag">NRM1</span><span class="tag">NRM2</span><span class="tag">SMM7</span><span class="tag">ASMM</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-file-text"></i></div><h3>Bill of Quantities (BOQ)</h3><p>Detailed, trade-by-trade BOQ preparation aligned to UK, Irish, and Australian standards.</p><div class="sstd"><span class="tag bl">UK</span><span class="tag bl">IE</span><span class="tag bl">AU</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-chart-bar"></i></div><h3>Cost Planning &amp; Estimation</h3><p>RIBA Stage 2–4 cost plans and elemental estimates for budgeting and design development.</p><div class="sstd"><span class="tag">RIBA Stages</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-search"></i></div><h3>Tendering &amp; Procurement</h3><p>Tender documentation, contractor benchmarking, comparisons, and insurance compliance review.</p><div class="sstd"><span class="tag bl">Bid support</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-receipt"></i></div><h3>Interim Valuations &amp; Final Accounts</h3><p>Monthly valuations, contractor payment assessments, variation management, and final account preparation.</p></div>
+      <div class="scard"><div class="sico"><i class="ti ti-arrows-diff"></i></div><h3>Variation &amp; Change Management</h3><p>Cost impact assessment of variations and change orders with financial tracking throughout project lifecycles.</p></div>
+      <div class="scard"><div class="sico"><i class="ti ti-dashboard"></i></div><h3>Cost Reporting &amp; Dashboards</h3><p>Cost Clarity dashboards, invoice trackers, and commercial data tools for real-time project cost control.</p><div class="sstd"><span class="tag bl">Cost Clarity</span><span class="tag bl">Excel</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-square-root"></i></div><h3>Area Measurement &amp; Scheduling</h3><p>Floor area schedules using RICS Code of Measuring Practice and IPMS.</p><div class="sstd"><span class="tag">IPMS</span><span class="tag">RICS</span></div></div>
+      <div class="scard"><div class="sico"><i class="ti ti-bulb"></i></div><h3>Value Engineering</h3><p>Cost optimization analysis and value engineering recommendations to improve project cost efficiency.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="sec" id="background">
+  <div class="sh"><div class="se"><i class="ti ti-school"></i> Credentials &amp; skills</div><h2>Professional Background</h2></div>
+  <div class="sb">
+    <div class="bgrid">
+      <div class="bgc bgcf">
+        <div class="edu">
+          <div class="edui"><i class="ti ti-building-community"></i></div>
+          <div>
+            <div class="edut">Bachelor of Science in Civil Engineering</div>
+            <div class="edus">Technological Institute of the Philippines, Manila &nbsp;·&nbsp; Graduated Mar 2020</div>
+            <div class="edub"><span class="chip g">Graduating Class President</span><span class="chip g">Top 20% of class</span><span class="chip">5 yrs Student Council</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bgc bgcf">
+        <div class="bgl">Core Competencies</div>
+        <div class="chips"><span class="chip">Quantity Take-Off</span><span class="chip">BOQ Preparation</span><span class="chip">Cost Planning</span><span class="chip">Tendering</span><span class="chip">Interim Valuations</span><span class="chip">Final Accounts</span><span class="chip">Variation Management</span><span class="chip">Cost Reporting</span><span class="chip">BIM Coordination</span><span class="chip">Contract Documentation</span><span class="chip">Procurement Support</span><span class="chip">Value Engineering</span></div>
+      </div>
+      <div class="bgc">
+        <div class="bgl">Estimating Software</div>
+        <div class="chips"><span class="chip g">CostX</span><span class="chip g">Bluebeam</span><span class="chip g">PlanSwift</span><span class="chip g">Pryda Build</span><span class="chip g">Excel</span><span class="chip g">AutoDesk</span></div>
+      </div>
+      <div class="bgc">
+        <div class="bgl">Standards &amp; Contracts</div>
+        <div class="chips"><span class="chip">NRM1 &amp; NRM2</span><span class="chip">SMM7</span><span class="chip">ASMM / AIQS</span><span class="chip">IPMS</span><span class="chip">RICS Code</span><span class="chip g">JCT</span><span class="chip g">NEC</span></div>
+      </div>
+      <div class="bgc bgcf">
+        <div class="bgl">Certifications &amp; Licenses</div>
+        <ul class="clist">
+          <li><i class="ti ti-certificate"></i>Registered Civil Engineer — Professional Regulation Commission</li>
+          <li><i class="ti ti-award"></i>Certificate in Quantity Surveying Global Training (Rank 1 Passer) — PICQS</li>
+          <li><i class="ti ti-brand-autodesk"></i>Completion Certificate: Estimator, PM &amp; Administrator — Autodesk Construction Cloud</li>
+          <li><i class="ti ti-leaf"></i>Construction Life Cycle Assessment Specialist — One Click LCA</li>
+          <li><i class="ti ti-chart-pie"></i>Project Management 101 (Traditional, Hybrid &amp; Agile) — MSTConnect PH</li>
+          <li><i class="ti ti-world"></i>English Communication Skills Specialization — Coursera</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="sec" id="projects">
+  <div class="sh"><div class="se"><i class="ti ti-layout-list"></i> Hands-on experience</div><h2>Projects &amp; Task Experience</h2></div>
+  <div class="sb">
+    <div class="pgrid">
+      <div class="pc">
+        <div class="ph2"><div><div class="pn">Residential &amp; Commercial — Imperial Commercial Solutions</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px;">UK Standards · Nov 2025 – Present</div></div><span class="pm uk">UK</span></div>
+        <ul class="ptasks"><li>Comprehensive BOQs and tender documentation per SMM7 &amp; NRM2</li><li>2D take-offs from architectural, structural, and MEP drawings via Bluebeam</li><li>Variation and change order management with full financial tracking</li><li>Procurement assistance, tender evaluations, and contractor benchmarking</li><li>Preparation of final accounts and value optimization reports</li></ul>
+        <div class="tused"><span class="tag">Bluebeam</span><span class="tag bl">NRM2</span><span class="tag bl">SMM7</span></div>
+      </div>
+      <div class="pc">
+        <div class="ph2"><div><div class="pn">Multi-Trade QS — Matrix Estimating</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px;">Australian Standard · Nov 2025 – Mar 2026</div></div><span class="pm au">AU</span></div>
+        <ul class="ptasks"><li>Detailed take-offs and priced BOQs across all trades (civil, architectural, structural, MEP)</li><li>Tender pricing and cost plans for bid submissions and project budgeting</li><li>Take-offs from 2D drawings and 3D models using CostX and Bluebeam</li><li>Delivered in line with AIQS and ASMM guidelines</li></ul>
+        <div class="tused"><span class="tag">CostX</span><span class="tag">Bluebeam</span><span class="tag bl">ASMM</span></div>
+      </div>
+      <div class="pc" style="border-left-color:var(--gold);">
+        <div class="ph2"><div><div class="pn">London Property &amp; Regional Projects — Arcadis UK &amp; Ireland</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px;">RIBA Stages 2–4 · Multi-Trade · Oct 2022 – Mar 2025</div></div><span class="pm ie">UK / IE</span></div>
+        <div class="stags"><span class="tag">Residential</span><span class="tag">Commercial</span><span class="tag">Industrial</span><span class="tag">Data Centres</span><span class="tag">Retail</span><span class="tag">Manufacturing</span></div>
+        <ul class="ptasks"><li>Multi-trade quantity take-offs and cost planning across residential, commercial, industrial, data centres, retail, and manufacturing sectors</li><li>Monthly interim valuations and contractor payment assessments for high-profile London projects</li><li>Cost Clarity dashboards and invoice trackers for commercial reporting and transparency</li><li>Cost planning at RIBA Stages 2–4 across multiple project types and UK regions</li><li>2D and 3D QTO for architectural, structural, and external works via CostX (NRM1, NRM2, IPMS)</li><li>Tender document prep, contractor comparisons, and insurance compliance review</li><li>BOQ verification, updates, and gap analysis for infrastructure and tech sector projects</li><li>Project exposure across London, Edinburgh, and key UK and Ireland cities</li></ul>
+        <div class="tused"><span class="tag">CostX</span><span class="tag bl">NRM1</span><span class="tag bl">NRM2</span><span class="tag bl">IPMS</span></div>
+      </div>
+      <div class="pc">
+        <div class="ph2"><div><div class="pn">City of Toronto Infrastructure Projects</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px;">Road, Sidewalk, Watermain · Remote · Jul–Oct 2022</div></div><span class="pm ca">CA</span></div>
+        <ul class="ptasks"><li>Permit preparation and City submissions for local infrastructure (road, pavement, sidewalk, watermain)</li><li>Utility locate requests and traffic control plan coordination</li><li>Road condition surveys and geotechnical/environmental report support</li><li>Field log compilation, borehole data, and survey photo organization for design reference</li></ul>
+      </div>
+      <div class="pc">
+        <div class="ph2"><div><div class="pn">Roof Truss &amp; Framing — Keith Timber Group</div><div style="font-size:12px;color:var(--text-muted);margin-top:3px;">Structural Estimating · South Australia · Nov 2020–Dec 2021</div></div><span class="pm au">AU</span></div>
+        <ul class="ptasks"><li>Roof, floor, and wall framing layouts with structural detailing and material take-offs using Pryda Build</li><li>Roof truss design analysis: timber selection, spacing, load distribution, bracing, and connections</li><li>Cost comparison of material options, timber grades, and steel brackets for BOQ optimization</li></ul>
+        <div class="tused"><span class="tag">Pryda Build</span><span class="tag bl">AU building codes</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec" id="experience">
+  <div class="sh"><div class="se"><i class="ti ti-timeline"></i> Career journey</div><h2>Work Experience</h2></div>
+  <div class="sb">
+    <div class="tl">
+      <div class="ti2">
+        <div class="tdot gd"></div>
+        <div class="jc">
+          <div class="jh"><div><div class="jr">Quantity Surveyor — Independent Contractor</div><div class="jco">Multiple clients · UK &amp; AU</div></div><span class="jd">Nov 2025 – Present</span></div>
+          <div class="jl"><i class="ti ti-map-pin" style="font-size:13px"></i> Caloocan, Philippines · Remote</div>
+          <div class="sr2"><div class="sr2h"><span class="sr2n">Imperial Commercial Solutions Ltd — UK</span><span class="sr2d">Nov 2025 – Present</span></div><ul class="jb"><li>BOQs, cost estimates, and tender documentation per SMM7 &amp; NRM2</li><li>Quantity take-offs from 2D drawings and 3D models using Bluebeam</li><li>End-to-end commercial support: procurement, tender evaluation, benchmarking, final accounts</li><li>Variation and change order management with cost impact tracking</li></ul></div>
+          <div class="sr2" style="margin-top:9px;"><div class="sr2h"><span class="sr2n">Matrix Estimating — AU</span><span class="sr2d">Nov 2025 – Mar 2026</span></div><ul class="jb"><li>Multi-trade quantity take-offs and priced BOQs across civil, architectural, structural, and MEP works</li><li>Tender pricing documents and cost plans aligned to AIQS and ASMM guidelines</li><li>Take-offs from 2D drawings and 3D models using CostX and Bluebeam</li></ul></div>
+        </div>
+      </div>
+      <div class="ti2">
+        <div class="tdot"></div>
+        <div class="jc">
+          <div class="jh"><div><div class="jr">Quantity Surveyor</div><div class="jco">The Penbrothers International, Inc.</div></div><span class="jd">Mar – Nov 2025</span></div>
+          <div class="jl"><i class="ti ti-map-pin" style="font-size:13px"></i> Mandaluyong, Philippines · Remote for Imperial Commercial Solutions (UK)</div>
+          <ul class="jb"><li>BOQs, cost estimates, and tender docs for UK residential and commercial projects (SMM7, NRM2)</li><li>Detailed 2D take-offs for architectural, structural, and MEP works via Bluebeam</li><li>Procurement support, tender evaluation, contractor comparisons, and variation assessment</li><li>Assisted in final accounts and value engineering recommendations</li></ul>
+        </div>
+      </div>
+      <div class="ti2">
+        <div class="tdot"></div>
+        <div class="jc">
+          <div class="jh"><div><div class="jr">Assistant Quantity Surveyor / Cost Consultant</div><div class="jco">Arcadis — UK &amp; Ireland Sector</div></div><span class="jd">Oct 2022 – Mar 2025</span></div>
+          <div class="jl"><i class="ti ti-map-pin" style="font-size:13px"></i> Makati City, Philippines · Remote for UK CCM Service Line</div>
+          <div class="stags" style="margin-bottom:9px;"><span class="tag">Residential</span><span class="tag">Commercial</span><span class="tag">Industrial</span><span class="tag">Data Centres</span><span class="tag">Retail</span><span class="tag">Manufacturing</span></div>
+          <ul class="jb"><li>Multi-trade cost planning and QTO across London Property &amp; Regional projects in UK and Ireland</li><li>Monthly valuations, contractor applications, and payment notices for high-profile London projects</li><li>Cost Clarity dashboards, invoice trackers, and commercial reporting tools</li><li>Cost planning at RIBA Stages 2–4 across residential, commercial, industrial, data centres, retail, and manufacturing</li><li>CostX-based 2D and 3D QTOs per NRM1, NRM2, and IPMS</li><li>Area measurement and scheduling via RICS Code of Measuring Practice</li><li>BOQ verification, gap analysis, and contract documentation support</li><li>Project exposure across London, Edinburgh, and key UK and Ireland cities</li></ul>
+        </div>
+      </div>
+      <div class="ti2">
+        <div class="tdot"></div>
+        <div class="jc">
+          <div class="jh"><div><div class="jr">Freelance Project Engineer</div><div class="jco">Geotechnical Consulting Company</div></div><span class="jd">Jul – Oct 2022</span></div>
+          <div class="jl"><i class="ti ti-map-pin" style="font-size:13px"></i> Remote · Toronto, Canada client</div>
+          <ul class="jb"><li>City permit preparation, utility locate requests, and road condition surveys</li><li>Geotechnical/environmental report support and traffic control plan coordination</li><li>Field log and borehole data compilation for infrastructure design reference</li></ul>
+        </div>
+      </div>
+      <div class="ti2">
+        <div class="tdot"></div>
+        <div class="jc">
+          <div class="jh"><div><div class="jr">Project Estimator</div><div class="jco">Emapta — supporting Keith Timber Group, AU</div></div><span class="jd">Nov 2020 – Dec 2021</span></div>
+          <div class="jl"><i class="ti ti-map-pin" style="font-size:13px"></i> Pasig City, Philippines · Remote for AU client</div>
+          <ul class="jb"><li>Roof, floor, and wall framing layouts with material take-offs using Pryda Build</li><li>Roof truss design analysis: timber selection, spacing, load distribution, and connection detailing</li><li>Cost comparison analysis for BOQ optimization across timber grades and layout alternatives</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT -->
+<div class="sec" id="payment">
+  <div class="sh"><div class="se"><i class="ti ti-coin"></i> Engagement terms</div><h2>Payment Scheme &amp; Rates</h2></div>
+  <div class="sb">
+    <div class="pcards">
+      <div class="pcard ft"><div class="pbadge">Preferred</div><i class="ti ti-clock pico"></i><div class="pt2">Hourly Rate</div><div class="pd">Billed per hour worked. Ideal for ongoing retainer or flexible project support.</div></div>
+      <div class="pcard"><i class="ti ti-file-invoice pico"></i><div class="pt2">Project-Based (Fixed)</div><div class="pd">Agreed lump sum per deliverable — BOQ, cost plan, take-off package, or full tender set.</div></div>
+      <div class="pcard"><i class="ti ti-calendar-stats pico"></i><div class="pt2">Monthly Retainer</div><div class="pd">Fixed monthly fee for dedicated capacity. Best for long-term or multi-project engagements.</div></div>
+      <div class="pcard"><i class="ti ti-repeat pico"></i><div class="pt2">Per-Item / Per-Trade</div><div class="pd">Priced per deliverable type — useful for estimating firms needing specific trade take-offs.</div></div>
+    </div>
+
+    <div class="bgl" style="margin-top:4px;">Rates Guide</div>
+    <div style="background:white;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;">
+      <table class="rates-table">
+        <thead><tr><th>Service</th><th>Type</th><th>Rate (indicative)</th></tr></thead>
+        <tbody>
+          <tr><td>Quantity Take-Off / BOQ</td><td><span class="rate-badge">Per trade / Fixed</span></td><td class="rate-val">Enquire</td></tr>
+          <tr><td>Cost Planning (RIBA Stage 2–4)</td><td><span class="rate-badge">Fixed / Hourly</span></td><td class="rate-val">Enquire</td></tr>
+          <tr><td>Interim Valuations</td><td><span class="rate-badge">Hourly / Monthly</span></td><td class="rate-val">Enquire</td></tr>
+          <tr><td>Tender &amp; Procurement Support</td><td><span class="rate-badge">Fixed</span></td><td class="rate-val">Enquire</td></tr>
+          <tr><td>Full Project QS Retainer</td><td><span class="rate-badge">Monthly</span></td><td class="rate-val">Enquire</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:6px;padding:0 2px;">Rates are negotiable based on project scope, volume, and engagement duration. Contact for a tailored quote.</div>
+
+    <div class="avail">
+      <div class="ai"><span class="al">Location</span><span class="av">Caloocan, Philippines</span></div>
+      <div class="ai"><span class="al">Availability</span><span class="av gd">Open to work</span></div>
+      <div class="ai"><span class="al">Time zones</span><span class="av" style="font-size:12px;line-height:1.5;">PHT (UTC+8) &nbsp;·&nbsp; UK Time (UTC/BST) &nbsp;·&nbsp; Ireland Time (UTC/IST)</span></div>
+      <div class="ai"><span class="al">Work type</span><span class="av">Remote &nbsp;·&nbsp; Freelance &nbsp;·&nbsp; Contract</span></div>
+    </div>
+    <div class="cta">
+      <div><div class="ctat">Ready to discuss your project?</div><div class="ctas">danilyn.laban@outlook.com &nbsp;·&nbsp; +63 992 417 8610</div></div>
+      <a class="ctab" href="mailto:danilyn.laban@outlook.com"><i class="ti ti-send"></i> Get in touch</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.pw -->
+
+<script>
+function show(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.np').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map=['about','services','background','projects','experience','payment'];
+  const i=map.indexOf(id);
+  if(i>=0)document.querySelectorAll('.np')[i].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
